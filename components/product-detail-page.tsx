@@ -57,7 +57,7 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
         reviewCount: 128,
         inStock: true,
         images: [
-          "/placeholder.svg?height=500&width=500",
+          "/accessoriescategory2.jpg",
           "/placeholder.svg?height=500&width=500",
           "/placeholder.svg?height=500&width=500",
           "/placeholder.svg?height=500&width=500",
@@ -144,6 +144,7 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
               throw new Error("Function not implemented.");
             }}
           />
+
           <div className="space-y-4">
             <h3 className="text-lg font-semibold">Delivery Details </h3>
             <div>

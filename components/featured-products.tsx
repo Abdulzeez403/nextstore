@@ -13,7 +13,7 @@ export function FeaturedProducts() {
     <section id="featured-products" className={sectionClasses}>
       <div className={containerClasses}>
         <h2 className={headingClasses}>Featured Products</h2>
-        <div className="px-4 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 lg:px-20">
+        <div className=" grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {ProductsData.slice(0, 8).map((product) => (
             <div
               key={product.id}

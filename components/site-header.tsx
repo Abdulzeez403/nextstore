@@ -43,18 +43,11 @@ export function Header() {
       >
         Products
       </Link>
-      {/* <Link
-        href="/#testimonials"
-        className="text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-        onClick={(e) => handleSmoothScroll(e, "/#testimonials")}
-      >
-        Testimonials
-      </Link> */}
     </>
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 lg:px-20">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <Sheet>
           <SheetTrigger asChild>

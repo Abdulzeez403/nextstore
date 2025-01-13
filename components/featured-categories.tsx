@@ -27,7 +27,7 @@ export function FeaturedCategories() {
               href={category.link}
               className="group relative m-2 block overflow-hidden rounded-lg transition-all duration-300 ease-in-out hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
             >
-              <div className="relative aspect-square">
+              <div className="relative aspect-square ">
                 <Image
                   src={category.image}
                   alt={category.title}

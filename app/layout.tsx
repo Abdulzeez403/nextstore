@@ -5,8 +5,8 @@ import { Footer } from "@/components/footer";
 import { Inter } from "next/font/google";
 
 export const metadata: Metadata = {
-  title: "v0 App",
-  description: "Created with v0",
+  title: "NextStore",
+  description: "The best place to buy stuff",
 };
 const inter = Inter({ subsets: ["latin"] });
 
@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className="container mx-auto px-2 md:px-6 lg:px-6">
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

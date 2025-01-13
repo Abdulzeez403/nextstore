@@ -7,46 +7,26 @@ interface ICategoryData {
 
 export const FeaturedCategoriesData: ICategoryData[] = [
   {
-    title: "Electronics",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/electronics",
+    title: "Phones",
+    image: "/phoneCategory1.jpg",
+    link: "/products",
     badge: "Popular",
   },
   {
-    title: "Clothing",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/clothing",
+    title: "Laptops",
+    image: "/laptopCategory2.jpg",
+    link: "/products",
   },
   {
     title: "Accessories",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/accessories",
+    image: "/accessoriescategory2.jpg",
+    link: "/products",
     badge: "New",
   },
   {
-    title: "Home & Kitchen",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/home-and-kitchen",
-  },
-  {
-    title: "Beauty",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/beauty",
-  },
-  {
-    title: "Sports",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/sports",
-  },
-  {
-    title: "Books",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/books",
-  },
-  {
-    title: "Toys",
-    image: "/placeholder.svg?height=400&width=400",
-    link: "/category/toys",
+    title: "Others",
+    image: "/other.jpeg",
+    link: "/products",
   },
 ];
 
@@ -66,7 +46,7 @@ export const ProductsData: IProductData[] = [
     title: "Wireless Earbuds",
     price: 79.99,
     images: [
-      "/placeholder.svg?height=300&width=300&text=Image1",
+      "/accessoriescategory2.jpg",
       "/placeholder.svg?height=300&width=300&text=Image2",
       "/placeholder.svg?height=300&width=300&text=Image3",
     ],
@@ -79,7 +59,7 @@ export const ProductsData: IProductData[] = [
     price: 199.99,
     discountedPrice: 179.99,
     images: [
-      "/placeholder.svg?height=300&width=300&text=Image1",
+      "/laptopCategory2.jpg",
       "/placeholder.svg?height=300&width=300&text=Image2",
     ],
     rating: 4.2,
@@ -88,7 +68,10 @@ export const ProductsData: IProductData[] = [
     id: 3,
     title: "Laptop Backpack",
     price: 49.99,
-    images: ["/placeholder.svg?height=300&width=300&text=Image1"],
+    images: [
+      "/phoneCategory.jpg",
+      "/placeholder.svg?height=300&width=300&text=Image2",
+    ],
     rating: 4.7,
   },
   {

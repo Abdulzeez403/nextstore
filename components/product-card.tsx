@@ -106,8 +106,11 @@ export function ProductCard({
               </span>
             )}
           </div>
-          <Button size="sm" onClick={() => onAddToCart(id)}>
-            Add to Cart
+          <Button
+            size="sm"
+            // onClick={() => onAddToCart(id)}
+          >
+            <Link href={`/products/${id}`}>Buy Now</Link>
           </Button>
         </div>
       </div>

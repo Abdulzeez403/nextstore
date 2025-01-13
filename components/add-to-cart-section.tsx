@@ -101,7 +101,7 @@ export function AddToCartSection({
           </SelectContent>
         </Select>
       </div>
-      <div className="flex space-x-4">
+      <div className=" space-x-4 hidden">
         <Button onClick={handleAddToCart} className="flex-1">
           Add to Cart
         </Button>
