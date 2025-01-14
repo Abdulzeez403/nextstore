@@ -53,9 +53,9 @@ export function ImageGallery({ images }: ImageGalleryProps) {
         </Dialog>
       </div>
       <div className="flex space-x-4">
-        <Button variant="outline" size="icon" onClick={prevImage}>
+        {/* <Button variant="outline" size="icon" onClick={prevImage}>
           <ChevronLeft className="h-4 w-4" />
-        </Button>
+        </Button> */}
         <div className="flex flex-1 space-x-2 overflow-x-auto">
           {images.map((image, index) => (
             <button
@@ -69,9 +69,9 @@ export function ImageGallery({ images }: ImageGalleryProps) {
             </button>
           ))}
         </div>
-        <Button variant="outline" size="icon" onClick={nextImage}>
+        {/* <Button variant="outline" size="icon" onClick={nextImage}>
           <ChevronRight className="h-4 w-4" />
-        </Button>
+        </Button> */}
       </div>
     </div>
   )

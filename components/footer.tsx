@@ -8,7 +8,7 @@ import { Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 export function Footer() {
   return (
     <footer className="bg-gray-100 py-12">
-      <div className="container grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+      <div className="container grid gap-8 md:grid-cols-2 lg:grid-cols-4 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="space-y-4">
           <h3 className="text-lg font-semibold">Quick Links</h3>
           <ul className="space-y-2">

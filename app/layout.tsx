@@ -17,7 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="container mx-auto px-2 md:px-6 lg:px-6">
+      <body className={inter.className}>
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />

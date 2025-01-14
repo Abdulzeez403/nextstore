@@ -11,14 +11,14 @@ import { Badge } from "./ui/badge";
 
 export function FeaturedCategories() {
   return (
-    <section id="featured-categories" className={sectionClasses}>
+    <section id="featured-categories">
       <div className={containerClasses}>
         <h2 className={headingClasses}>Featured Categories</h2>
         <Carousel
           itemsToShow={{
             small: 2,
             medium: 4,
-            large: 6,
+            large: 4,
           }}
         >
           {FeaturedCategoriesData.map((category) => (

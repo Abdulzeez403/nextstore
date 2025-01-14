@@ -57,7 +57,7 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
         reviewCount: 128,
         inStock: true,
         images: [
-          "/accessoriescategory2.jpg",
+         "/laptopnew.jpg",
           "/placeholder.svg?height=500&width=500",
           "/placeholder.svg?height=500&width=500",
           "/placeholder.svg?height=500&width=500",
@@ -96,7 +96,7 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
   }, [productId]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <div className="flex m-0 justify-center items-center h-100vh">Loading...</div>;
   }
 
   const handleQuantityChange = (newQuantity: number) => {
@@ -195,7 +195,6 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
       </div>
       <div className="mt-16">
         <RelatedProducts products={[]} />
-        {/* You can add related products here */}
       </div>
     </div>
   );

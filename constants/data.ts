@@ -8,24 +8,24 @@ interface ICategoryData {
 export const FeaturedCategoriesData: ICategoryData[] = [
   {
     title: "Phones",
-    image: "/phoneCategory1.jpg",
+    image: "/phonenew.jpg",
     link: "/products",
     badge: "Popular",
   },
   {
     title: "Laptops",
-    image: "/laptopCategory2.jpg",
+    image: "/laptopnew.jpg",
     link: "/products",
   },
   {
     title: "Accessories",
-    image: "/accessoriescategory2.jpg",
+    image: "/headsetnew.jpg",
     link: "/products",
     badge: "New",
   },
   {
     title: "Others",
-    image: "/other.jpeg",
+    image: "/accessoriesnew.jpg",
     link: "/products",
   },
 ];
@@ -46,7 +46,7 @@ export const ProductsData: IProductData[] = [
     title: "Wireless Earbuds",
     price: 79.99,
     images: [
-      "/accessoriescategory2.jpg",
+      "/phonenew.jpg",
       "/placeholder.svg?height=300&width=300&text=Image2",
       "/placeholder.svg?height=300&width=300&text=Image3",
     ],
@@ -59,7 +59,7 @@ export const ProductsData: IProductData[] = [
     price: 199.99,
     discountedPrice: 179.99,
     images: [
-      "/laptopCategory2.jpg",
+      "/laptopnew.jpg",
       "/placeholder.svg?height=300&width=300&text=Image2",
     ],
     rating: 4.2,
@@ -69,7 +69,7 @@ export const ProductsData: IProductData[] = [
     title: "Laptop Backpack",
     price: 49.99,
     images: [
-      "/phoneCategory.jpg",
+      "/headsetnew.jpg",
       "/placeholder.svg?height=300&width=300&text=Image2",
     ],
     rating: 4.7,
