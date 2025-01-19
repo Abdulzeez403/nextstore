@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ProductCard } from "@/components/product-card";
 import { FilterSidebar } from "@/components/filter-sidebar";
 import { SortingDropdown } from "@/components/sorting-dropdown";
@@ -9,12 +9,25 @@ import { SearchBar } from "@/components/search-bar";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { ProductsData } from "@/constants/data";
+import { IProduct } from "@/lib/features/product/type";
+import { fetchProducts } from "@/lib/features/product/productThunk";
+import { RootState, AppDispatch } from "@/lib/store";
+import { useSelector, useDispatch } from "react-redux";
 
 const categories = ["Electronics", "Accessories", "Wearables"];
 const brands = ["Brand A", "Brand B", "Brand C"];
 
 export default function ProductListingPage() {
-  const [products, setProducts] = useState(ProductsData);
+  const { loading, error, items } = useSelector(
+    (state: RootState) => state.product
+  );
+  const dispatch = useDispatch<AppDispatch>();
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  const [products, setProducts] = useState<IProduct[]>(items);
   const [currentPage, setCurrentPage] = useState(1);
   const [showFilters, setShowFilters] = useState(false);
 
@@ -78,7 +91,7 @@ export default function ProductListingPage() {
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {products.map((product) => (
               <ProductCard
-                key={product.id}
+                key={product?._id}
                 {...product}
                 onAddToCart={handleAddToCart}
               />

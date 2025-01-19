@@ -1,34 +1,34 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import Image from 'next/image'
-import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
-import { Button } from '@/components/ui/button'
-import { ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
+import { useState } from "react";
+import Image from "next/image";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
 interface ImageGalleryProps {
-  images: string[]
+  images: string[];
 }
 
 export function ImageGallery({ images }: ImageGalleryProps) {
-  const [currentImage, setCurrentImage] = useState(0)
+  const [currentImage, setCurrentImage] = useState(0);
 
   const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length)
-  }
+    setCurrentImage((prev) => (prev + 1) % images.length);
+  };
 
   const prevImage = () => {
-    setCurrentImage((prev) => (prev - 1 + images.length) % images.length)
-  }
+    setCurrentImage((prev) => (prev - 1 + images.length) % images.length);
+  };
 
   return (
-    <div className="flex flex-col space-y-4">
-      <div className="relative aspect-square overflow-hidden rounded-lg">
+    <div className="flex flex-col space-y-4 ">
+      <div className="relative aspect-square overflow-hidden rounded-lg ">
         <Image
           src={images[currentImage]}
           alt={`Product image ${currentImage + 1}`}
           fill
-          className="object-cover"
+          className="object-cover bg-gray-200"
         />
         <Dialog>
           <DialogTrigger asChild>
@@ -61,11 +61,16 @@ export function ImageGallery({ images }: ImageGalleryProps) {
             <button
               key={index}
               className={`relative aspect-square h-16 w-16 overflow-hidden rounded-md ${
-                index === currentImage ? 'ring-2 ring-primary' : ''
+                index === currentImage ? "ring-2 ring-primary" : ""
               }`}
               onClick={() => setCurrentImage(index)}
             >
-              <Image src={image} alt={`Thumbnail ${index + 1}`} fill className="object-cover" />
+              <Image
+                src={image}
+                alt={`Thumbnail ${index + 1}`}
+                fill
+                className="object-cover"
+              />
             </button>
           ))}
         </div>
@@ -74,6 +79,5 @@ export function ImageGallery({ images }: ImageGalleryProps) {
         </Button> */}
       </div>
     </div>
-  )
+  );
 }
-

@@ -1,12 +1,23 @@
+"use client";
+import react, { useEffect } from "react";
 import { ProductDetailsPage } from "@/components/product-detail-page";
-
-// This is a dynamic route, so we need to generate static params
-export async function generateStaticParams() {
-  // In a real application, you would fetch this data from an API or database
-  const products = [1, 2, 3, 4, 5, 6]; // Example product IDs
-  return products.map((id) => ({ id: id.toString() }));
-}
+import { fetchProductById } from "@/lib/features/product/productThunk";
+import { useSelector, useDispatch } from "react-redux";
+import { AppDispatch, RootState } from "@/lib/store";
 
 export default function Page({ params }: { params: { id: string } }) {
-  return <ProductDetailsPage productId={params.id} />;
+  const {
+    loading,
+    error,
+    product: data,
+  } = useSelector((state: RootState) => state.product);
+
+  const dispatch = useDispatch<AppDispatch>();
+  useEffect(() => {
+    dispatch(fetchProductById(params.id));
+  }, [params.id]);
+  if (!data) {
+    return <div>Loading...</div>;
+  }
+  return <ProductDetailsPage product={data} />;
 }

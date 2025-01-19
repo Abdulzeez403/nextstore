@@ -12,7 +12,7 @@ import {
 } from "@/components/ui/select";
 
 interface AddToCartSectionProps {
-  sizes: string[];
+  sizes?: string[];
   colors: string[];
   onAddToCart: (quantity: number, size: string, color: string) => void;
   onQuantityChange: (newQuantity: number) => void;
@@ -21,8 +21,8 @@ interface AddToCartSectionProps {
 }
 
 export function AddToCartSection({
-  sizes,
-  colors,
+  sizes = [],
+  colors = [],
   onAddToCart,
   onQuantityChange,
   onSizeChange,
@@ -76,7 +76,7 @@ export function AddToCartSection({
             <SelectValue placeholder="Select size" />
           </SelectTrigger>
           <SelectContent>
-            {sizes.map((s) => (
+            {sizes?.map((s) => (
               <SelectItem key={s} value={s}>
                 {s}
               </SelectItem>
@@ -93,7 +93,7 @@ export function AddToCartSection({
             <SelectValue placeholder="Select color" />
           </SelectTrigger>
           <SelectContent>
-            {colors.map((c) => (
+            {colors?.map((c) => (
               <SelectItem key={c} value={c}>
                 {c}
               </SelectItem>

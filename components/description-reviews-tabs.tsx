@@ -1,29 +1,29 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Star } from 'lucide-react'
+import { useState } from "react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Star } from "lucide-react";
 
 interface Review {
-  id: number
-  author: string
-  rating: number
-  comment: string
-  date: string
+  id: number;
+  author: string;
+  rating: number;
+  comment: string;
+  date: string;
 }
 
 interface DescriptionReviewsTabsProps {
-  description: string
-  specifications: { [key: string]: string }
-  reviews: Review[]
+  description: string;
+  specifications: { [key: string]: string };
+  reviews?: Review[];
 }
 
 export function DescriptionReviewsTabs({
   description,
   specifications,
-  reviews,
+  reviews = [],
 }: DescriptionReviewsTabsProps) {
-  const [activeTab, setActiveTab] = useState('description')
+  const [activeTab, setActiveTab] = useState("description");
 
   return (
     <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
@@ -38,8 +38,8 @@ export function DescriptionReviewsTabs({
       <TabsContent value="specifications" className="mt-4">
         <table className="w-full">
           <tbody>
-            {Object.entries(specifications).map(([key, value]) => (
-              <tr key={key} className="border-b">
+            {specifications?.map(({ key, value, _id }) => (
+              <tr key={_id} className="border-b">
                 <td className="py-2 font-semibold">{key}</td>
                 <td className="py-2">{value}</td>
               </tr>
@@ -60,7 +60,9 @@ export function DescriptionReviewsTabs({
                   <Star
                     key={i}
                     className={`h-4 w-4 ${
-                      i < review.rating ? 'fill-yellow-400 text-yellow-400' : 'fill-gray-200 text-gray-200'
+                      i < review.rating
+                        ? "fill-yellow-400 text-yellow-400"
+                        : "fill-gray-200 text-gray-200"
                     }`}
                   />
                 ))}
@@ -71,6 +73,5 @@ export function DescriptionReviewsTabs({
         </div>
       </TabsContent>
     </Tabs>
-  )
+  );
 }
-

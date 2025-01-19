@@ -27,7 +27,7 @@ export function HeroSection() {
             </p>
             <div className="flex flex-col gap-4 sm:flex-row sm:justify-center">
               <Button size="lg" className="text-base sm:text-lg" asChild>
-                <Link href="/product">Shop Now</Link>
+                <Link href="/products">Shop Now</Link>
               </Button>
               <Button
                 variant="outline"
@@ -35,7 +35,7 @@ export function HeroSection() {
                 className="bg-white/10 text-base text-white backdrop-blur hover:bg-white/20 hover:text-white sm:text-lg"
                 asChild
               >
-                <Link href="/about" aria-disabled>
+                <Link href="/products" aria-disabled>
                   Learn More
                 </Link>
               </Button>

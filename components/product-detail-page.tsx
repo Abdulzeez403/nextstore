@@ -11,32 +11,14 @@ import { WhatsAppButton } from "@/components/whatsapp-button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
+import { IProduct } from "@/lib/features/product/type";
 
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  rating: number;
-  reviewCount: number;
-  inStock: boolean;
-  images: string[];
-  sizes: string[];
-  colors: string[];
-  description: string;
-  specifications: Record<string, string>;
-  reviews: Array<{
-    id: number;
-    author: string;
-    rating: number;
-    comment: string;
-    date: string;
-  }>;
-  sellerPhoneNumber: string;
+interface ProductDetailsPageProps {
+  product: IProduct;
 }
 
-export function ProductDetailsPage({ productId }: { productId: string }) {
-  const [product, setProduct] = useState<Product | null>(null);
+export function ProductDetailsPage({ product: data }: ProductDetailsPageProps) {
+  const [product, setProduct] = useState<IProduct | null>(data);
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedColor, setSelectedColor] = useState("");
@@ -44,60 +26,9 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
   const [userPhone, setUserPhone] = useState("");
   const [userNotes, setUserNotes] = useState("");
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      // Simulating API call
-      await new Promise((resolve) => setTimeout(resolve, 500));
-      setProduct({
-        id: parseInt(productId),
-        title: `Product ${productId}`,
-        price: 199.99,
-        discountedPrice: 179.99,
-        rating: 4.5,
-        reviewCount: 128,
-        inStock: true,
-        images: [
-         "/laptopnew.jpg",
-          "/placeholder.svg?height=500&width=500",
-          "/placeholder.svg?height=500&width=500",
-          "/placeholder.svg?height=500&width=500",
-        ],
-        sizes: ["S", "M", "L"],
-        colors: ["Black", "White", "Blue"],
-        description: `Description for Product ${productId}. Experience premium quality with our latest offering.`,
-        specifications: {
-          "Battery Life": "Up to 30 hours",
-          "Bluetooth Version": "5.0",
-          "Noise Cancellation": "Active",
-          Weight: "250g",
-          Warranty: "2 years",
-        },
-        reviews: [
-          {
-            id: 1,
-            author: "John Doe",
-            rating: 5,
-            comment: "Excellent product, highly recommended!",
-            date: "2023-05-15",
-          },
-          {
-            id: 2,
-            author: "Jane Smith",
-            rating: 4,
-            comment: "Great product, but could use some improvements.",
-            date: "2023-05-10",
-          },
-        ],
-        sellerPhoneNumber: "+2348063249490", // Example seller phone number
-      });
-    };
+  const sizes = ["S", "M", "L"];
 
-    fetchProduct();
-  }, [productId]);
-
-  if (!product) {
-    return <div className="flex m-0 justify-center items-center h-100vh">Loading...</div>;
-  }
+  const colors = ["Black", "White", "Blue"];
 
   const handleQuantityChange = (newQuantity: number) => {
     setQuantity(newQuantity);
@@ -116,23 +47,25 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
       <Breadcrumb
         items={[
           { label: "Products", href: "/products" },
-          { label: product.title, href: `/products/${product.id}` },
+          {
+            label: product?.name || "",
+            href: `/products/${product?._id || ""}`,
+          },
         ]}
       />
       <div className="mt-8 grid gap-8 md:grid-cols-2">
-        <ImageGallery images={product.images} />
+        {product?.images && (
+          <ImageGallery images={product?.images.map((image) => image.url)} />
+        )}
         <div className="space-y-6">
           <ProductInfo
-            title={product.title}
-            price={product.price}
-            discountedPrice={product.discountedPrice}
-            rating={product.rating}
-            reviewCount={product.reviewCount}
-            inStock={product.inStock}
+            title={product?.name || ""}
+            price={product?.price || 0}
+            rating={product?.rating || 3}
           />
           <AddToCartSection
-            sizes={product.sizes}
-            colors={product.colors}
+            sizes={product?.sizes || sizes}
+            colors={product?.colors || colors}
             onQuantityChange={handleQuantityChange}
             onSizeChange={handleSizeChange}
             onColorChange={handleColorChange}
@@ -176,7 +109,11 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
             </div>
           </div>
           <WhatsAppButton
-            product={product}
+            product={{
+              title: product?.name || "",
+              price: product?.price ?? 0,
+              sellerPhoneNumber: "08063249490",
+            }}
             quantity={quantity}
             selectedSize={selectedSize}
             selectedColor={selectedColor}
@@ -188,9 +125,9 @@ export function ProductDetailsPage({ productId }: { productId: string }) {
       </div>
       <div className="mt-12">
         <DescriptionReviewsTabs
-          description={product.description}
-          specifications={product.specifications}
-          reviews={product.reviews}
+          description={product?.description ?? ""}
+          specifications={(product?.specifications as any) || []}
+          // reviews={product?.reviews || []}
         />
       </div>
       <div className="mt-16">

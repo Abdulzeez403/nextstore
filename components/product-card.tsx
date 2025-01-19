@@ -3,30 +3,23 @@ import Link from "next/link";
 import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Carousel } from "@/components/ui/carousel";
+import { IProduct } from "@/lib/features/product/type";
 
-interface ProductCardProps {
-  id: number;
-  title: string;
-  price: number;
-  discountedPrice?: number;
-  images: string[];
-  rating: number;
+interface ProductCardProps extends IProduct {
   onAddToCart: (id: number) => void;
 }
 
-export function ProductCard({
-  id,
-  title,
+export const ProductCard: React.FC<ProductCardProps> = ({
+  _id,
+  name,
+  description,
   price,
-  discountedPrice,
-  images,
-  rating,
+  stock,
+  images = [],
+  rating = 3,
+  numReviews = 0,
   onAddToCart,
-}: ProductCardProps) {
-  const discount = discountedPrice
-    ? Math.round((1 - discountedPrice / price) * 100)
-    : 0;
-
+}) => {
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-md">
       <Carousel
@@ -37,15 +30,15 @@ export function ProductCard({
         showDots={true}
       >
         {[
-          images.length > 0 ? (
+          images?.length > 0 ? (
             images.map((image, index) => (
               <div
                 key={index}
                 className="relative aspect-square overflow-hidden"
               >
                 <Image
-                  src={image}
-                  alt={`${title} - Image ${index + 1}`}
+                  src={image.url}
+                  alt={`${name} - Image ${index + 1}`}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover transition-transform duration-300 ease-in-out group-hover:scale-110"
@@ -62,17 +55,12 @@ export function ProductCard({
           ),
         ]}
       </Carousel>
-      {discount > 0 && (
-        <div className="absolute left-2 top-2 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
-          -{discount}%
-        </div>
-      )}
       <div className="flex flex-1 flex-col p-4">
         <Link
-          href={`/products/${id}`}
+          href={`/products/${_id}`}
           className="mb-2 text-sm font-medium text-gray-900 hover:text-primary sm:text-base"
         >
-          {title}
+          {name}
         </Link>
         <div className="mb-2 flex items-center">
           {[...Array(5)].map((_, i) => (
@@ -91,29 +79,16 @@ export function ProductCard({
         </div>
         <div className="mt-auto flex items-center justify-between">
           <div>
-            {discountedPrice ? (
-              <>
-                <span className="text-lg font-bold text-primary">
-                  ${discountedPrice.toFixed(2)}
-                </span>
-                <span className="ml-2 text-sm text-gray-500 line-through">
-                  ${price.toFixed(2)}
-                </span>
-              </>
-            ) : (
-              <span className="text-lg font-bold text-primary">
-                ${price.toFixed(2)}
-              </span>
-            )}
+            <span className="text-lg font-bold text-primary">
+              N{price.toFixed(2)}
+            </span>
           </div>
-          <Button
-            size="sm"
-            // onClick={() => onAddToCart(id)}
-          >
-            <Link href={`/products/${id}`}>Buy Now</Link>
-          </Button>
+
+          <Link href={`/products/${_id}`}>
+            <Button size="sm">Buy Now</Button>
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
