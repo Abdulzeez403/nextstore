@@ -7,8 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest",
-    "build:no-tests": "NEXT_SKIP_TESTS=true next build"
+    "build:max-memory": "node --max-old-space-size=4096 ./node_modules/.bin/next build"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
