@@ -17,8 +17,8 @@ export function HeroSection() {
         />
       </div>
       <div className="relative z-10">
-        <div className="container flex min-h-[400px] flex-col items-center justify-center px-4 py-16 text-center sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
-          <div className="max-w-3xl space-y-4 sm:space-y-6 md:space-y-8">
+        <div className=" flex min-h-[400px] flex-col items-center justify-center  px-4 py-16 text-center sm:min-h-[500px] md:min-h-[600px] lg:min-h-[700px]">
+          <div className="max-w-3xl space-y-4 sm:space-y-6 md:space-y-8 ">
             <h1 className="text-3xl font-bold tracking-tighter text-white sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl">
               Discover the Best Deals on Phones, Laptops, and More
             </h1>
